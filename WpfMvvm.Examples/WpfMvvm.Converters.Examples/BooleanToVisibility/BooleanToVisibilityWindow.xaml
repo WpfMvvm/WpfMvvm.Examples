@@ -1,0 +1,67 @@
+﻿<Window x:Class="WpfMvvm.Converters.Examples.BooleanToVisibility.BooleanToVisibilityWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfMvvm.Converters.Examples.BooleanToVisibility"
+        xmlns:cnvs="clr-namespace:WpfMvvm.Converters;assembly=WpfMvvm.Converters"
+        mc:Ignorable="d"
+        Title="BooleanToVisibilityWindow" Height="600" Width="800">
+    <FrameworkElement.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="Margin" Value="20,10"/>
+            <Setter Property="TextAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="15,5"/>
+        </Style>
+    </FrameworkElement.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <CheckBox x:Name="checkBox" Content="Включить/выключить" Margin="10" HorizontalAlignment="Center"/>
+        <UniformGrid Columns="1" Grid.Row="1">
+        <Border Background="LightBlue" Padding="10" VerticalAlignment="Center">
+            <UniformGrid Columns="1" VerticalAlignment="Center">
+                <TextBlock Text="Демонстрация BooleanToVisibilityConverter (с Коллапсом)"/>
+                <Border BorderBrush="Blue" BorderThickness="2" HorizontalAlignment="Center" Margin="5">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="True" Background="LightGreen" Width="200"
+                           Visibility="{Binding IsChecked, Converter={cnvs:BooleanToVisibility}, ElementName=checkBox}"/>
+                        <TextBlock Text="Конец StackPanel" Background="AliceBlue"/>
+                    </StackPanel>
+                </Border>
+                <Border BorderBrush="Blue" BorderThickness="2" HorizontalAlignment="Center" Margin="5">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="True" Background="LightGreen" Width="200"
+                           Visibility="{Binding IsChecked, Converter={cnvs:BooleanToVisibility}, ElementName=checkBox}"/>
+                        <TextBlock Text="False" Background="LightPink" Width="200"
+                           Visibility="{Binding IsChecked, Converter={cnvs:BooleanToVisibility Mode=Not}, ElementName=checkBox}"/>
+                        <TextBlock Text="Конец StackPanel" Background="AliceBlue"/>
+                    </StackPanel>
+                </Border>
+            </UniformGrid>
+        </Border>
+        <Border Background="LightBlue" Padding="10" VerticalAlignment="Center">
+            <UniformGrid Columns="1" VerticalAlignment="Center">
+                <TextBlock Text="Демонстрация BooleanToVisibilityConverter (с Коллапсом)"/>
+                <Border BorderBrush="Blue" BorderThickness="2" HorizontalAlignment="Center" Margin="5">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="True" Background="LightGreen" Width="200"
+                           Visibility="{Binding IsChecked, Converter={cnvs:BooleanToVisibility Mode=Hidden}, ElementName=checkBox}"/>
+                        <TextBlock Text="Конец StackPanel" Background="AliceBlue"/>
+                    </StackPanel>
+                </Border>
+                <Border BorderBrush="Blue" BorderThickness="2" HorizontalAlignment="Center">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="True" Background="LightGreen" Width="200"
+                           Visibility="{Binding IsChecked, Converter={cnvs:BooleanToVisibility Mode=Hidden}, ElementName=checkBox}"/>
+                        <TextBlock Text="False" Background="LightPink" Width="200"
+                           Visibility="{Binding IsChecked, Converter={cnvs:BooleanToVisibility Mode=NotHiden}, ElementName=checkBox}"/>
+                        <TextBlock Text="Конец StackPanel" Background="AliceBlue"/>
+                    </StackPanel>
+                </Border>
+            </UniformGrid>
+        </Border>
+    </UniformGrid></Grid>
+</Window>

@@ -1,0 +1,20 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:WpfMvvm.Converters.Examples.Dictionaries"
+                    xmlns:cnvs="clr-namespace:WpfMvvm.Converters;assembly=WpfMvvm.Converters">
+    <cnvs:DictionaryTypeConverter x:Key="FiguresTemplates">
+        <DataTemplate x:Key="{x:Type local:Circle}">
+            <Ellipse  Width="{Binding Width}" Height="{Binding Height}"
+                      StrokeThickness="2" Stroke="Aqua"/>
+        </DataTemplate>
+        <DataTemplate x:Key="{x:Type local:Rectangle}">
+            <Rectangle Width="{Binding Width}" Height="{Binding Height}"
+                       StrokeThickness="2" Stroke="LightGreen"/>
+        </DataTemplate>
+        <DataTemplate x:Key="{x:Type local:Line}">
+            <Line Width="{Binding Width}" Height="{Binding Height}"
+                  StrokeThickness="2" Stroke="Coral"
+                  X2="{Binding Width}" Y2="{Binding Height}"/>
+        </DataTemplate>
+    </cnvs:DictionaryTypeConverter>
+</ResourceDictionary>

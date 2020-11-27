@@ -1,0 +1,153 @@
+﻿<Window x:Class="WpfMvvm.Converters.Examples.Equals.EqualsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfMvvm.Converters.Examples.Equals"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        xmlns:cnvs="clr-namespace:WpfMvvm.Converters;assembly=WpfMvvm.Converters"
+        mc:Ignorable="d"
+        Title="EqualsWindow" Height="450" Width="800">
+    <FrameworkElement.Resources>
+        <x:Array x:Key="array" Type="sys:String">
+            <sys:String>Один</sys:String>
+            <sys:String>Два</sys:String>
+            <sys:String>Три</sys:String>
+            <sys:String>Четыре</sys:String>
+            <sys:String>Пять</sys:String>
+        </x:Array>
+        <DataTemplate x:Key="String.Template.Equals">
+            <CheckBox Content="{Binding }"
+                      IsChecked="{Binding SelectedItem, ElementName=cBox, Converter={cnvs:EqualsConverter}}"/>
+        </DataTemplate>
+    </FrameworkElement.Resources>
+    <UniformGrid Columns="1">
+        <ComboBox x:Name="cBox" HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="100"
+                      ItemsSource="{DynamicResource array}"
+                      SelectedIndex="1" />
+        <UniformGrid Columns="2">
+            <StackPanel>
+                <CheckBox Content="Один"
+                          IsChecked="{Binding SelectedItem, ElementName=cBox,
+                          Converter={cnvs:EqualsConverter},
+                          ConverterParameter=Один}"/>
+                <CheckBox Content="Два"
+                          IsChecked="{Binding SelectedItem, ElementName=cBox,
+                          Converter={cnvs:EqualsConverter},
+                          ConverterParameter=Два}"/>
+                <CheckBox Content="Три"
+                          IsChecked="{Binding SelectedItem, ElementName=cBox,
+                          Converter={cnvs:EqualsConverter},
+                          ConverterParameter=Три}"/>
+                <CheckBox Content="Четыре"
+                          IsChecked="{Binding SelectedItem, ElementName=cBox,
+                          Converter={cnvs:EqualsConverter},
+                          ConverterParameter=Четыре}"/>
+                <CheckBox Content="Пять"
+                          IsChecked="{Binding SelectedItem, ElementName=cBox,
+                          Converter={cnvs:EqualsConverter},
+                          ConverterParameter=Пять}"/>
+            </StackPanel>
+            <StackPanel>
+                <CheckBox Content="Один"
+                          IsChecked="{Binding SelectedItem, ElementName=cBox,
+                          Converter={cnvs:EqualsConverter IsTrue=False},
+                          ConverterParameter=Один}"/>
+                <CheckBox Content="Два"
+                          IsChecked="{Binding SelectedItem, ElementName=cBox,
+                          Converter={cnvs:EqualsConverter IsTrue=False},
+                          ConverterParameter=Два}"/>
+                <CheckBox Content="Три"
+                          IsChecked="{Binding SelectedItem, ElementName=cBox,
+                          Converter={cnvs:EqualsConverter IsTrue=False},
+                          ConverterParameter=Три}"/>
+                <CheckBox Content="Четыре"
+                          IsChecked="{Binding SelectedItem, ElementName=cBox,
+                          Converter={cnvs:EqualsConverter IsTrue=False},
+                          ConverterParameter=Четыре}"/>
+                <CheckBox Content="Пять"
+                          IsChecked="{Binding SelectedItem, ElementName=cBox,
+                          Converter={cnvs:EqualsConverter IsTrue=False},
+                          ConverterParameter=Пять}"/>
+            </StackPanel>
+            <StackPanel>
+                <Grid>
+                    <RadioButton Content="Один"
+                          IsChecked="{Binding SelectedItem, ElementName=cBox,
+                          Converter={cnvs:EqualsConverter},
+                          ConverterParameter=Один}"/>
+                </Grid>
+                <Grid>
+                    <RadioButton Content="Два"
+                          IsChecked="{Binding SelectedItem, ElementName=cBox,
+                          Converter={cnvs:EqualsConverter},
+                          ConverterParameter=Два}"/>
+                </Grid>
+                <Grid>
+                    <RadioButton Content="Три"
+                          IsChecked="{Binding SelectedItem, ElementName=cBox,
+                          Converter={cnvs:EqualsConverter},
+                          ConverterParameter=Три}"/>
+                </Grid>
+                <Grid>
+                    <RadioButton Content="Четыре"
+                          IsChecked="{Binding SelectedItem, ElementName=cBox,
+                          Converter={cnvs:EqualsConverter},
+                          ConverterParameter=Четыре}"/>
+                </Grid>
+                <Grid>
+                    <RadioButton Content="Пять"
+                          IsChecked="{Binding SelectedItem, ElementName=cBox,
+                          Converter={cnvs:EqualsConverter},
+                          ConverterParameter=Пять}"/>
+                </Grid>
+            </StackPanel>
+            <StackPanel>
+                <Grid>
+                    <RadioButton Content="Один"
+                          IsChecked="{Binding SelectedItem, ElementName=cBox,
+                          Converter={cnvs:EqualsConverter IsTrue=False},
+                          ConverterParameter=Один}"
+                          Click="RadioButtonClick"/>
+                </Grid>
+                <Grid>
+                    <RadioButton Content="Два"
+                          IsChecked="{Binding SelectedItem, ElementName=cBox,
+                          Converter={cnvs:EqualsConverter IsTrue=False},
+                          ConverterParameter=Два}"
+                          Click="RadioButtonClick"/>
+                </Grid>
+                <Grid>
+                    <RadioButton Content="Три"
+                          IsChecked="{Binding SelectedItem, ElementName=cBox,
+                          Converter={cnvs:EqualsConverter IsTrue=False},
+                          ConverterParameter=Три}"
+                          Click="RadioButtonClick"/>
+                </Grid>
+                <Grid>
+                    <RadioButton Content="Четыре"
+                          IsChecked="{Binding SelectedItem, ElementName=cBox,
+                          Converter={cnvs:EqualsConverter IsTrue=False},
+                          ConverterParameter=Четыре}"
+                          Click="RadioButtonClick"/>
+                </Grid>
+                <Grid>
+                    <RadioButton Content="Пять"
+                          IsChecked="{Binding SelectedItem, ElementName=cBox,
+                          Converter={cnvs:EqualsConverter IsTrue=False},
+                          ConverterParameter=Пять}"
+                          Click="RadioButtonClick"/>
+                </Grid>
+                <x:Code>
+                    <![CDATA[
+        private void RadioButtonClick(object sender, RoutedEventArgs e)
+        {
+            var button = (RadioButton)sender;
+            button.IsChecked = false;
+        }
+                    ]]>
+                </x:Code>
+            </StackPanel>
+        </UniformGrid>
+    </UniformGrid>
+</Window>

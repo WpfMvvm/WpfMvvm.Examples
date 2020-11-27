@@ -1,0 +1,57 @@
+﻿<Window x:Class="WpfMvvm.Converters.Examples.GetType.GetTypeWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfMvvm.Converters.Examples.GetType" xmlns:cnvs="clr-namespace:WpfMvvm.Converters;assembly=WpfMvvm.Converters"
+        mc:Ignorable="d"
+        Title="GetTypeWindow" Height="450" Width="800">
+    <FrameworkElement.Resources>
+        <x:Array x:Key="figures" Type="{x:Type local:Figure}">
+            <local:Circle Width="100" Height="50"/>
+            <local:Line Width="100" Height="50"/>
+            <local:Rectangle Width="100" Height="50"/>
+            <local:Circle Width="50" Height="100"/>
+            <local:Line Width="50" Height="100"/>
+            <local:Rectangle Width="50" Height="100"/>
+        </x:Array>
+        <Style x:Key="Item.Style" TargetType="ContentPresenter">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Converter={cnvs:GetTypeConverter}}" Value="{x:Type local:Circle}">
+                    <Setter Property="ContentTemplate">
+                        <Setter.Value>
+                            <DataTemplate DataType="{x:Type local:Circle}">
+                                <Ellipse Width="{Binding Width}" Height="{Binding Height}"
+                                         StrokeThickness="2" Stroke="Aqua"/>
+                            </DataTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Converter={cnvs:GetTypeConverter}}" Value="{x:Type local:Rectangle}">
+                    <Setter Property="ContentTemplate">
+                        <Setter.Value>
+                            <DataTemplate DataType="{x:Type local:Rectangle}">
+                                <Rectangle Width="{Binding Width}" Height="{Binding Height}"
+                                           StrokeThickness="2" Stroke="LightGreen"/>
+                            </DataTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Converter={cnvs:GetTypeConverter}}" Value="{x:Type local:Line}">
+                    <Setter Property="ContentTemplate">
+                        <Setter.Value>
+                            <DataTemplate DataType="{x:Type Line}">
+                                <Line Width="{Binding Width}" Height="{Binding Height}"
+                                      StrokeThickness="2" Stroke="Coral"
+                                      X2="{Binding Width}" Y2="{Binding Height}"/>
+                            </DataTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </FrameworkElement.Resources>
+    <Grid>
+        <ItemsControl ItemsSource="{DynamicResource figures}" ItemContainerStyle="{StaticResource Item.Style}"/>
+    </Grid>
+</Window>
