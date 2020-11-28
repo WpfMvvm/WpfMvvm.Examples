@@ -1,0 +1,42 @@
+﻿<Window x:Name="window" x:Class="WpfMvvm.Converters.Examples.Expression.ExpressionWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfMvvm.Converters.Examples.Expression"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        xmlns:cnvs="clr-namespace:WpfMvvm.Converters;assembly=WpfMvvm.Converters"
+        mc:Ignorable="d"
+        Title="ExpressionWindow" Height="450" Width="800">
+    <FrameworkElement.Resources>
+        <x:Array Type="sys:String" x:Key="operators">
+            <sys:String>+</sys:String>
+            <sys:String>-</sys:String>
+            <sys:String>/</sys:String>
+            <sys:String>*</sys:String>
+        </x:Array>
+    </FrameworkElement.Resources>
+    <UniformGrid Columns="1">
+        <UniformGrid Columns="5" VerticalAlignment="Center">
+            <TextBox x:Name="tb1" Text="1.2" Margin="5" HorizontalContentAlignment="Center"/>
+            <ComboBox x:Name="cBox" Margin="5" HorizontalContentAlignment="Center"
+                      ItemsSource="{DynamicResource operators}"
+                      SelectedIndex="0"/>
+            <TextBox x:Name="tb2" Text="3.4" Margin="5" HorizontalContentAlignment="Center"/>
+            <TextBlock Text="=" TextAlignment="Center" Margin="5"/>
+            <TextBlock TextAlignment="Center" Margin="5">
+                <TextBlock.Text>
+                    <MultiBinding Converter="{cnvs:ExpressionConverter}" ConverterParameter="{}({0}) {1} ({2})">
+                        <Binding Path="Text" ElementName="tb1"/>
+                        <Binding Path="SelectedItem" ElementName="cBox"/>
+                        <Binding Path="Text" ElementName="tb2"/>
+                    </MultiBinding>
+                </TextBlock.Text>
+            </TextBlock>
+        </UniformGrid>
+        <TextBlock Margin="5" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Run Text="Половина высоты окна:"/>
+            <Run Text="{Binding ActualHeight, ElementName=window, Mode=OneWay, Converter={cnvs:ExpressionConverter}, ConverterParameter='{}{0} / 2.0'}"/>
+        </TextBlock>
+    </UniformGrid>
+</Window>

@@ -49,8 +49,8 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
-    <Reference Include="WpfMvvm.Converters, Version=0.0.0.8, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\WpfMvvm.Converters.0.0.0.8\lib\net48\WpfMvvm.Converters.dll</HintPath>
+    <Reference Include="WpfMvvm.Converters, Version=0.0.0.9, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WpfMvvm.Converters.0.0.0.9\lib\net48\WpfMvvm.Converters.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -77,6 +77,9 @@
     </Compile>
     <Compile Include="Equals\EqualsWindow.xaml.cs">
       <DependentUpon>EqualsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Expression\ExpressionWindow.xaml.cs">
+      <DependentUpon>ExpressionWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="GetType\Figure.cs" />
     <Compile Include="GetType\GetTypeWindow.xaml.cs">
@@ -121,6 +124,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Equals\EqualsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Expression\ExpressionWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
