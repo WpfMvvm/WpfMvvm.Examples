@@ -22,17 +22,17 @@
     </FrameworkElement.Resources>
     <UniformGrid Columns="1">
         <UniformGrid Columns="3" VerticalAlignment="Center">
+            <CheckBox x:Name="checkBox1" Content="Включить/выключить" HorizontalAlignment="Center" VerticalContentAlignment="Center"/>
+            <TextBlock Text="{Binding IsChecked, ElementName=checkBox1, Converter={cnvs:TraceConverter Nornal}}"/>
+            <TextBlock Text="{Binding IsChecked, Converter={cnvs:BooleanNotConverter}, ElementName=checkBox1}"/>
+        </UniformGrid>
+        <UniformGrid Columns="3" VerticalAlignment="Center">
             <FrameworkElement.Resources>
                 <cnvs:BooleanNotConverter x:Key="BooleanNotConverter"/>
             </FrameworkElement.Resources>
             <CheckBox x:Name="checkBox" Content="Включить/выключить" HorizontalAlignment="Center" VerticalContentAlignment="Center"/>
             <TextBlock Text="{Binding IsChecked, ElementName=checkBox}"/>
             <TextBlock Text="{Binding IsChecked, Converter={cnvs:TraceConverter Negation, AfterAndBefore, Converter={cnvs:BooleanNotConverter}}, ElementName=checkBox}"/>
-        </UniformGrid>
-        <UniformGrid Columns="3" VerticalAlignment="Center">
-            <CheckBox x:Name="checkBox1" Content="Включить/выключить" HorizontalAlignment="Center" VerticalContentAlignment="Center"/>
-            <TextBlock Text="{Binding IsChecked, ElementName=checkBox1, Converter={cnvs:TraceConverter Nornal}}"/>
-            <TextBlock Text="{Binding IsChecked, Converter={cnvs:BooleanNotConverter}, ElementName=checkBox1}"/>
         </UniformGrid>
     </UniformGrid>
 </Window>

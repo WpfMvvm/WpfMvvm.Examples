@@ -11,16 +11,5 @@ namespace WpfMvvm.Converters.Examples.Chains
         public static IValueConverter InstanceNot { get; }
             = new ReadOnlyChainOfConverters(BooleanNotConverter.Instance, Instance);
 
-        //static BooleanToColorConverter()
-        //{
-
-        //    InstanceNot = new ChainOfConverters()
-        //    {
-        //        BooleanNotConverter.Instance,
-        //        new BooleanToColorConverter()
-        //    };
-
-        //}
-
     }
 }

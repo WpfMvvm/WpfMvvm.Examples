@@ -28,7 +28,8 @@
             <Setter Property="HorizontalAlignment" Value="Center"/>
         </Style>
     </FrameworkElement.Resources>
-    <UniformGrid x:Name="uniformGrid" Columns="2" Tag="{Binding Text, ElementName=textBox, Converter={cnvs:DefaultValueConverter TargetType=Point}}">
+    <UniformGrid x:Name="uniformGrid" Columns="2" 
+                 Tag="{Binding Text, ElementName=textBox, Converter={cnvs:DefaultValueConverter TargetType=Point}}">
         <TextBlock Text="Значения X и Y через разделитель:"/>
         <TextBox x:Name="textBox" Text="123 456"/>
         <TextBlock Text="Значение X:"/>

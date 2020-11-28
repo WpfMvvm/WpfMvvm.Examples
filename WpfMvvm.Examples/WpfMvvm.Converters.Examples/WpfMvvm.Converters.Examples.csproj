@@ -62,6 +62,7 @@
     <Compile Include="Diagnostics\TraceWindow.cs">
       <DependentUpon>TraceWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Dictionaries\DictionariesTypeViewModel.cs" />
     <Compile Include="Dictionaries\DictionariesWindow.xaml.cs">
       <DependentUpon>DictionariesWindow.xaml</DependentUpon>
     </Compile>
