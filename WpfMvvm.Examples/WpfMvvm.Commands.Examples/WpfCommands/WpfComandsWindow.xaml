@@ -1,0 +1,35 @@
+﻿<Window x:Class="Examples.WpfCommands.WpfComandsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Examples.WpfCommands"
+        mc:Ignorable="d"
+        Title="ComandsWindow" Height="450" Width="800"
+        DataContext="{DynamicResource model}">
+    <FrameworkElement.Resources>
+        <local:WpfCommandsViewModel x:Key="model"/>
+    </FrameworkElement.Resources>
+    <UniformGrid Columns="1">
+        <CheckBox x:Name="checkBox" Content="Включить/Выключить"
+                  HorizontalAlignment="Center" VerticalAlignment="Center"
+                  IsChecked="{Binding IsHello}"/>
+        <Button Content="Команда без параметров" Padding="15,5"
+                HorizontalAlignment="Center" VerticalAlignment="Center"
+                Command="{Binding HelloCommand, Mode=OneWay}"/>
+        <Button Content="Команда с object параметром" Padding="15,5"
+                HorizontalAlignment="Center" VerticalAlignment="Center"
+                Command="{Binding HelloArgCommand, Mode=OneWay}"
+                CommandParameter="{Binding IsChecked, ElementName=checkBox}"/>
+        <Button Content="Команда с bool параметром" Padding="15,5"
+                HorizontalAlignment="Center" VerticalAlignment="Center"
+                Command="{Binding HelloBoolCommand, Mode=OneWay}"
+                CommandParameter="{Binding IsChecked, ElementName=checkBox}"/>
+        <TextBox x:Name="textBox" Width="100" Text="true"
+                 HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Button Content="Команда для проверки конвертации string в bool" Padding="15,5"
+                HorizontalAlignment="Center" VerticalAlignment="Center"
+                Command="{Binding HelloBoolCommand, Mode=OneWay}"
+                CommandParameter="{Binding Text, ElementName=textBox}"/>
+    </UniformGrid>
+</Window>

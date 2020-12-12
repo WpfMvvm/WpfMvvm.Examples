@@ -85,8 +85,6 @@
     <Compile Include="GetType\GetTypeWindow.xaml.cs">
       <DependentUpon>GetTypeWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="RelayCommand.cs" />
-    <Compile Include="RelayCommandT.cs" />
     <Page Include="BooleanNot\BooleanNotWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -139,7 +137,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="BaseInpc.cs" />
     <Compile Include="BooleanNot\BooleanNotWindow.xaml.cs">
       <DependentUpon>BooleanNotWindow.xaml</DependentUpon>
     </Compile>
@@ -186,6 +183,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\SimplifiedImplementations\SimplifiedImplementations.csproj">
+      <Project>{7f712b9a-7dfb-4211-9bf0-feb9e085919b}</Project>
+      <Name>SimplifiedImplementations</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

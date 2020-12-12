@@ -9,16 +9,23 @@
         Title="MainWindow" Height="450" Width="800">
     <FrameworkElement.Resources>
         <local:ViewModel x:Key="viewModel">
-            <sys:String x:Key="1">Первый</sys:String>
-            <sys:String x:Key="2">Второй</sys:String>
+            <local:ViewModel.Dictionary>
+                <sys:String x:Key="1">Первый</sys:String>
+                <sys:String x:Key="2">Второй</sys:String>
+            </local:ViewModel.Dictionary>
         </local:ViewModel>
         <local:ListProperty x:Key="list">
             <sys:String>Первый</sys:String>
             <sys:String>Второй</sys:String>
         </local:ListProperty>
     </FrameworkElement.Resources>
-    <Grid>
+    <UniformGrid Columns="2">
         <Label Content="{Binding Dictionary[1], Source={StaticResource viewModel}}"/>
-        <ItemsControl ItemsSource="{Binding List, Source={StaticResource list}}" VerticalAlignment="Center"/>
-    </Grid>
+        <ItemsControl ItemsSource="{Binding List, Source={StaticResource list}}"/>
+        <TextBox x:Name="textBox" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Button Content="Example"
+                Command="{Binding ExampleCommand, Mode=OneWay, Source={StaticResource viewModel}}"
+                CommandParameter="{Binding Text, ElementName=textBox}" />
+        <TextBox/>
+    </UniformGrid>
 </Window>

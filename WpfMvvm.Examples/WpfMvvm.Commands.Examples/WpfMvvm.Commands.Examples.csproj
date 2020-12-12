@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{3DFC0165-2A85-48D5-BBD9-C520F8C809B9}</ProjectGuid>
+    <ProjectGuid>{67AA5ED8-AB60-4CF5-9D99-2525683064D0}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>WpfMvvmApp</RootNamespace>
-    <AssemblyName>WpfMvvmApp</AssemblyName>
+    <RootNamespace>WpfMvvm.Commands.Examples</RootNamespace>
+    <AssemblyName>WpfMvvm.Commands.Examples</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -49,8 +49,17 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
-    <Reference Include="WpfMvvm.Converters, Version=0.0.0.8, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\WpfMvvm.Converters.0.0.0.8\lib\net48\WpfMvvm.Converters.dll</HintPath>
+    <Reference Include="WpfMvvm.Commands, Version=0.0.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WpfMvvm.Commands.0.0.0.1\lib\net48\WpfMvvm.Commands.dll</HintPath>
+    </Reference>
+    <Reference Include="WpfMvvm.Converters, Version=0.0.0.10, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WpfMvvm.Converters.0.0.0.10\lib\net48\WpfMvvm.Converters.dll</HintPath>
+    </Reference>
+    <Reference Include="WpfMvvm.ViewModel, Version=0.0.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WpfMvvm.ViewModel.0.0.0.1\lib\net48\WpfMvvm.ViewModel.dll</HintPath>
+    </Reference>
+    <Reference Include="WpfMvvm.WpfCommands, Version=0.0.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WpfMvvm.WpfCommands.0.0.0.1\lib\net48\WpfMvvm.WpfCommands.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -58,7 +67,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ViewModel.cs" />
+    <Page Include="WpfCommands\WpfComandsWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Commands\ComandsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -67,14 +83,20 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ListProperty.cs" />
+    <Compile Include="WpfCommands\WpfComandsWindow.cs">
+      <DependentUpon>WpfComandsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfCommands\WpfCommandsViewModel.cs" />
+    <Compile Include="Commands\ComandsWindow.xaml.cs">
+      <DependentUpon>ComandsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Commands\CommandsViewModel.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MyBrushBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -100,6 +122,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SimplifiedImplementations\SimplifiedImplementations.csproj">
+      <Project>{7f712b9a-7dfb-4211-9bf0-feb9e085919b}</Project>
+      <Name>SimplifiedImplementations</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

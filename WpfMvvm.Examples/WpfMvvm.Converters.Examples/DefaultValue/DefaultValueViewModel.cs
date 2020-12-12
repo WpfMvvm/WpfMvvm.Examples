@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using Simplified;
+using System.Windows;
 using System.Windows.Input;
 
 namespace WpfMvvm.Converters.Examples.DefaultValue
